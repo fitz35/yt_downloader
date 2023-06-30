@@ -1,9 +1,9 @@
 import tkinter as tk
 from gui.NewVideoFrame import NewVideoFrame
 from params.params import VIDEOS_LIST_FILE_PATH
-from youtube.VideoMetadata import VideoMetadata, load_list_of_video, save_list_of_videos
+from youtube.VideoMetadata import VideoMetadata
 
-from utils.utils import validate_youtube_link
+from utils.utils import load_list_of_video, save_list_of_videos, validate_youtube_link
 
 class MainFrame:
 
