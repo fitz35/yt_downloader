@@ -1,11 +1,13 @@
 import tkinter as tk
 from typing import Callable
 
+from youtube.VideoMetadata import ImportanceLevel, VideoMetadata
+
 class NewVideoFrame:
     """
     add a video to the list
     """
-    def __init__(self, parent: tk.Tk, onFinish : Callable[[], None]) -> None:
+    def __init__(self, parent: tk.Tk, onFinish : Callable[[VideoMetadata], None]) -> None:
         """
         create a dialog window to add video to the list
         @params parent : the tk root
@@ -32,7 +34,7 @@ class NewVideoFrame:
 
     def __submit_dialog(self) -> None:
         name = self.entry.get()
-        self.onFinish()
+        self.onFinish(VideoMetadata("testUID", 720, ImportanceLevel.LOW))
         self.dialog.destroy()
 
     def on_close(self) -> None:

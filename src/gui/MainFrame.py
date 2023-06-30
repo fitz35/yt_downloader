@@ -1,11 +1,17 @@
 import tkinter as tk
 from gui.NewVideoFrame import NewVideoFrame
+from params.params import VIDEOS_LIST_FILE_PATH
+from youtube.VideoMetadata import VideoMetadata, load_list_of_video, save_list_of_videos
 
 from utils.utils import validate_youtube_link
 
 class MainFrame:
+
+    videos_list : list[VideoMetadata]
+
     def __init__(self, root: tk.Tk) -> None:
         self.root = root
+        self.videos_list = load_list_of_video(VIDEOS_LIST_FILE_PATH)
         self.create_widgets()
 
     def create_widgets(self) -> None:
@@ -22,7 +28,9 @@ class MainFrame:
     def button_clicked(self) -> None:
         print(validate_youtube_link(self.yt_link_entry.get()))
         # open the new video frame and attache the callback
-        self.diag = NewVideoFrame(self.root, lambda : self.newVideoClosed())
+        self.diag = NewVideoFrame(self.root, lambda x : self.newVideoClosed(x))
 
-    def newVideoClosed(self):
+    def newVideoClosed(self, video_data : VideoMetadata):
+        self.videos_list.append(video_data)
+        save_list_of_videos(self.videos_list, VIDEOS_LIST_FILE_PATH)
         print("close new video closed")

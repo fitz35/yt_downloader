@@ -1,0 +1,10 @@
+[
+    {
+        "uuid": "testUID",
+        "resolution": 720,
+        "importance_level": {
+            "__enum__": "ImportanceLevel.LOW"
+        },
+        "already_download": false
+    }
+]

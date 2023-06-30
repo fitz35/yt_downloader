@@ -2,7 +2,6 @@ import tkinter as tk
 
 from gui.MainFrame import MainFrame
 
-
 def main():
     # Create the main window
     root = tk.Tk()
